@@ -44,9 +44,14 @@ function Operate(pOperator, pOperandA, pOperandB)
     {
         if(pOperator !== oper.operator) continue;
 
-        outputField.textContent = oper.func(Number(pOperandA), Number(pOperandB));
+        let result = oper.func(Number(pOperandA), Number(pOperandB));
+        
+        outputField.textContent = result % 1 === 0 ? result : (Math.floor(result * MAX_REMAINDER)) / MAX_REMAINDER;
     }
 }
+
+//5 digits max after the decimal point
+const MAX_REMAINDER = 100000;
 
 const operators = [new Operator("+", Add),
                     new Operator("-", Sub),
@@ -106,6 +111,8 @@ function ResetFields()
     inputField.textContent = "0";
     operand = "";
     outputField.textContent = "0";
+    hasDecimal = false;
+    placedOperator = false;
 }
 
 
