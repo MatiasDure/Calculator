@@ -30,6 +30,33 @@ main{
     background-color: rgb(157, 196, 255);
 }
 
+footer
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    background-color: rgb(44, 42, 61);
+    color: Orange;
+}
+
+footer h4 a
+{
+    text-decoration: none;
+    color: orange;
+}
+
+footer h4
+{
+    font-size: 20px;
+}
+
+footer h4 a:hover
+{
+    color: white;
+    text-decoration: underline;
+}
+
 .calculator-container
 {
     display: flex;
@@ -81,17 +108,42 @@ main{
     background-color: rgb(44, 42, 61);
     color: white;
 }
+
+.number:hover
+{
+    background-color:white;
+    color: rgb(44, 42, 61);
+}
+
 .operator 
 {
     width: 25%;
     background-color: orange;
     color: white;
 }
+
+.operator:hover
+{
+    background-color: white;
+    color: orange;
+}
+
 .extra
 {
     width: 25%;
     background-color: lightgray;
-    color: black;
+    color: rgb(44, 42, 61);
+}
+
+.extra:hover
+{
+    background-color: rgb(44, 42, 61);
+    color: lightgray;
+}
+
+.number, .operator, .extra
+{
+    cursor: pointer;
 }
 
 .two-spaces
