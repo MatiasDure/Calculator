@@ -44,7 +44,7 @@ function Operate(pOperator, pOperandA, pOperandB)
     {
         if(pOperator !== oper.operator) continue;
 
-        console.log(oper.func(Number(pOperandA), Number(pOperandB)));
+        outputField.textContent = oper.func(Number(pOperandA), Number(pOperandB));
     }
 }
 
@@ -53,7 +53,59 @@ const operators = [new Operator("+", Add),
                     new Operator("*", Mult),
                     new Operator("/", Div)];
 
-// let input = prompt("Enter an equation");
+const numbers = document.querySelectorAll(".number");
+const opers = document.querySelectorAll(".operator");
+const inputField = document.querySelector(".input-values");
+const outputField = document.querySelector(".output-values");
+const equalBtn = document.querySelector(".equals");
+const clearBtn = document.querySelector(".clear");
 
-// Parse(input);
+let operand = "";
+let hasDecimal = false;
+let placedOperator = false;
+
+numbers.forEach(num => num.addEventListener("click", () => PopulateInputField(num.dataset.value)));
+opers.forEach(oper => oper.addEventListener("click", () => AddOperator(oper.dataset.value)));
+equalBtn.addEventListener("click", () => Parse(inputField.textContent));
+clearBtn.addEventListener("click", ResetFields);
+
+function PopulateInputField(pValue)
+{
+    if(pValue === ".")
+    {
+        if(hasDecimal) return;
+
+        operand += operand.length === 0 ? `0${pValue}` : pValue;
+        
+        hasDecimal = true;
+    }
+    else operand += pValue;
+
+    inputField.textContent = operand;
+    placedOperator = false;
+}
+
+function AddOperator(pOperator)
+{
+    if(placedOperator) return;
+
+    if(operand.split(" ").length === 3)
+    {
+        Parse(operand);
+        inputField.textContent = outputField.textContent;
+    }
+
+    inputField.textContent += ` ${pOperator} `;
+    operand = inputField.textContent;
+    hasDecimal = false;
+    placedOperator = true;
+}
+
+function ResetFields()
+{
+    inputField.textContent = "0";
+    operand = "";
+    outputField.textContent = "0";
+}
+
 
