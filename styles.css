@@ -7,7 +7,10 @@
 
 body
 {
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header{
@@ -25,9 +28,11 @@ div
     font-size: 25px;
 }
 
-main{
+main
+{
     padding: 100px;
     background-color: rgb(157, 196, 255);
+    flex: 1;
 }
 
 footer
